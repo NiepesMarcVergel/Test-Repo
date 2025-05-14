@@ -7,27 +7,25 @@ This document outlines the pseudocode for the **Breadth-First Search (BFS)** alg
 ## Function Definition
 
 ```plaintext
-1. Start Video Capture
-2. Loop:
-Capture and flip the current video frame.
-Convert frame to grayscale.
-Apply:
-Face detection using Haar Cascade.
-Motion detection using background subtraction.
-If face or motion is detected:
-Update last_detection_time.
-Turn ON all appliances not already ON.
-Log the ON event.
-Else:
-If last_detection_time exists:
-Calculate elapsed time.
-If elapsed > 10s, show warning message.
-If elapsed > 15s:
-Turn OFF appliances.
-Log the OFF event.
-Reset detection timer.
-If no detection timer exists, display “Detecting...” status.
-Update GUI with new camera frame and appliance icons.
-Wait 10 ms and repeat.
-3. Admin Interaction (via GUI)
-Login, view logs, export data, and access appliance usage graphs.
+Initialize system
+Start camera feed
+
+While application is running:
+    Read video frame
+    Convert to grayscale
+    Detect faces and motion
+
+    If face or motion detected:
+        Update last_detection_time
+        If appliance is OFF:
+            Turn appliance ON
+            Log activity
+    Else:
+        If last_detection_time exists:
+            If time since detection > 10s:
+                Show warning
+            If time since detection > 15s:
+                Turn OFF appliances
+                Log activity
+                Reset last_detection_time
+    Update GUI
