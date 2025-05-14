@@ -7,35 +7,27 @@ This document outlines the pseudocode for the **Breadth-First Search (BFS)** alg
 ## Function Definition
 
 ```plaintext
-Function BFS(Graph G, Node Start_Node):
-    Input: 
-        G – A graph represented as an adjacency list or matrix.
-        Start_Node – The node from which traversal begins.
-
-    Output: 
-        A list of nodes visited in BFS order, and optionally,
-        the shortest path from Start_Node to all reachable nodes.
-
-    Step 1: Initialize
-        - Create an empty queue Q
-        - Create a Set/Array 'Visited' to keep track of visited nodes
-        - (Optional) Create a Map 'Predecessor' to track paths
-
-    Step 2: Begin traversal
-        - Mark Start_Node as visited
-        - Enqueue Start_Node into Q
-
-    Step 3: Main Loop
-        While Q is not empty:
-            a. Dequeue the front node v from Q
-            b. For each neighbor u of v:
-                i. If u is not in Visited:
-                    - Mark u as visited
-                    - Record Predecessor[u] = v (for path reconstruction)
-                    - Enqueue u into Q
-
-    Step 4: (Optional) Path Recovery
-        - To reconstruct the shortest path from Start_Node to any node,
-          follow the Predecessor map backwards from the target node.
-
-    Return the list of visited nodes (and Predecessor map if used)
+1. Start Video Capture
+2. Loop:
+Capture and flip the current video frame.
+Convert frame to grayscale.
+Apply:
+Face detection using Haar Cascade.
+Motion detection using background subtraction.
+If face or motion is detected:
+Update last_detection_time.
+Turn ON all appliances not already ON.
+Log the ON event.
+Else:
+If last_detection_time exists:
+Calculate elapsed time.
+If elapsed > 10s, show warning message.
+If elapsed > 15s:
+Turn OFF appliances.
+Log the OFF event.
+Reset detection timer.
+If no detection timer exists, display “Detecting...” status.
+Update GUI with new camera frame and appliance icons.
+Wait 10 ms and repeat.
+3. Admin Interaction (via GUI)
+Login, view logs, export data, and access appliance usage graphs.
